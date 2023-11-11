@@ -34,7 +34,7 @@ def getModel():
     x_data, y_data = getData2()
 
     X_train, X_test, y_train, y_test = train_test_split(x_data, y_data, test_size=.2, random_state=44)
-    clf = XGBClassifier(max_depth=4, objective='multi:softmax', n_estimators=100, 
+    clf = XGBClassifier(max_depth=4, objective='multi:softmax', n_estimators=100, tree_method='hist',
                             enable_categorical=True, learning_rate=.001)
     clf.fit(X_train, y_train)
     return clf
