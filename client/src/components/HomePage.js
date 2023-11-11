@@ -8,27 +8,56 @@ const HomePage = () => {
     const [message, setMessage] = useState('');
     const [isFinished, setIsFinished] = useState(false);
     const [answers, setAnswers] = useState({});
+    const [score, setScore] = useState(null);
 
-    useEffect(() => {
-        fetch('http://127.0.0.1:5000/hello')
-            .then(response => response.text())
-            .then(data => setMessage(data))
-            .catch(error => console.error('Error fetching data:', error));
-    }, []);
 
-    const handleFinish = (finalAnswers) => {
-        setAnswers(finalAnswers);
-        setIsFinished(true);
+    const handleFinish = async (finalAnswers) => {
+        try {
+            const response = await fetch('http://10.228.76.76:5000/api/getResult', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(finalAnswers),
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+            setScore(data.message);
+            setIsFinished(true);
+        } catch (error) {
+            console.error('Error fetching data:', error.message);
+            setIsFinished(true);
+        }
     };
+    
+
+    function convertToNumeric(data) {
+        const numericFields = ['age', 'Medu', 'Fedu', 'traveltime', 'studytime', 'failures', 'famrel', 'freetime', 'goout', 'Dalc', 'Walc', 'health', 'absences'];
+    
+        let convertedData = {};
+    
+        for (const key in data) {
+            if (numericFields.includes(key) && !isNaN(parseInt(data[key]))) {
+                convertedData[key] = parseInt(data[key], 10);
+            } else {
+                convertedData[key] = data[key];
+            }
+        }
+    
+        return convertedData;
+    }
 
     return (
         <div className="homepage animate-fade-in">
             <h1>Welcome to the Learnalytics Platform</h1>
-            <p>Message from the server: {message}</p>
             {!isFinished ? (
                 <Slideshow onFinish={handleFinish} />
             ) : (
-                <ResultComponent answers={answers} />
+                <ResultComponent answers={score} />
             )}
         </div>
     );

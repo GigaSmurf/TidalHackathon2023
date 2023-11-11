@@ -1,0 +1,112 @@
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
+    min-height: 100vh; /* Take at least full viewport height */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.results-header {
+    margin-bottom: 1em;
+}
+
+.recommendations {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 2em;
+    width: 80%; /* Set a max-width or percentage as needed */
+    max-width: 600px; 
+}
+
+.recommendation-indicator {
+    width: 100%;
+    height: 20px;
+    background-color: #dc3545; 
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Color coding for the indicators */
+.indicator-0 { background-color: #dc3545; }
+.indicator-1 { background-color: #ffc107; }
+.indicator-2 { background-color: #17a2b8; }
+.indicator-3 { background-color: #28a745; }
+
+.resource-section {
+    margin-top: 40px;
+}
+
+.resource-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.resource-card {
+    width: 280px;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: #ecf0f1; /* Slightly off-white background */
+    text-align: center; /* Center content */
+    transition: transform 0.3s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+}
+
+.resource-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: block; /* Ensures image is centered */
+}
+
+.resource-card h4 {
+    margin-bottom: 0.5em;
+}
+
+.resource-card p {
+    font-size: 0.9rem;
+    margin-bottom: 1em;
+}
+
+.resource-card a {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.resource-card a:hover {
+    background-color: #0056b3;
+}
+
+.recommendation-indicator {
+    width: 100%; /* Full width */
+    height: 20px;
+    border-radius: 5px;
+    background-color: #dc3545; /* Default color, will be overridden by class */
+    margin: 10px 0;
+    position: relative;
+}
+
+.recommendation-indicator-inner {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 1s ease-in-out;
+}
+
+.indicator-0 { width: 0%; background: #dc3545; } /* Red */
+.indicator-1 { width: 33%; background: linear-gradient(to right, #dc3545, #ffc107); } /* Orange */
+.indicator-2 { width: 66%; background: linear-gradient(to right, #ffc107, #17a2b8); } /* Yellowish-Blue */
+.indicator-3 { width: 100%; background: linear-gradient(to right, #17a2b8, #28a745); } /* Green */
