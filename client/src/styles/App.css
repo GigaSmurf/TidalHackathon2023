@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+
+@keyframes move {
+  to {
+    transform: translate(100vw, 100vh);
+  }
+}
+
+.node {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #61dafb;
+  animation: move 20s linear infinite;
+  opacity: 0.6;
+}
+
+/* You can create different sizes for variety */
+.node.small { width: 10px; height: 10px; }
+.node.medium { width: 15px; height: 15px; }
+.node.large { width: 20px; height: 20px; }

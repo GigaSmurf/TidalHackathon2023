@@ -32,8 +32,8 @@ const questions = [
     { id: 'Walc', question: "Weekend alcohol consumption:", options: ['1', '2', '3', '4', '5'] },
     { id: 'health', question: "Current health status:", options: ['1', '2', '3', '4', '5'] },
     { id: 'absences', question: "Number of school absences:", type: 'number' }
-  ];
-  
+];
+
 
 const getRandomGradient = () => {
     const gradients = [
@@ -51,7 +51,7 @@ const Slideshow = ({ onFinish }) => {
     const [answers, setAnswers] = useState({});
     const [gradient, setGradient] = useState(getRandomGradient());
 
-   const handleNext = () => {
+    const handleNext = () => {
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setGradient(getRandomGradient());
@@ -72,7 +72,11 @@ const Slideshow = ({ onFinish }) => {
     };
 
     const handleChange = (e) => {
-        setAnswers({ ...answers, [questions[currentQuestionIndex].id]: e.target.value });
+        const { id } = currentQuestion;
+        const value = e.target.value;
+        // Check if the current question type is 'number' and parse the value
+        const parsedValue = currentQuestion.type === 'number' ? parseFloat(value) : value;
+        setAnswers({ ...answers, [id]: parsedValue });
     };
 
     const currentQuestion = questions[currentQuestionIndex];
