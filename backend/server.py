@@ -39,4 +39,4 @@ def your_post_handler():
     return jsonify(response), 200  # Return a JSON
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
