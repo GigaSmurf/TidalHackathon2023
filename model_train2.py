@@ -4,6 +4,8 @@ from xgboost import XGBClassifier
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from parsing_csv import getData2
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
+
 def calculateAccuracy(original, predicted):
     correct = 0
     i = 0
@@ -32,16 +34,29 @@ x_data, y_data = getData2()
 
 X_train, X_test, y_train, y_test = train_test_split(x_data, y_data, test_size=.2, random_state=44)
 
-max_depth = 0
+# param_grid = {
+#     'max_depth': [3, 5, 7, 9],
+#     'n_estimators': [100, 200, 300],
+#     'learning_rate': [0.01, 0.1, 0.2],
+#     'enable_categorical': [True, False]
+# }
+
+#grid_search = GridSearchCV(XGBClassifier(objective='multi:softprob'), param_grid, cv=5)
+# grid_search.fit(X_train, y_train)
+
+# best_params = grid_search.best_params_
+# best_model = grid_search.best_estimator_
+
+max_depth = 4
 max_test_acc = 0.0
 max_train_acc = 0.0
 paramaters = {"max_depth": 0, "n_estimators" : 0, "learning_rate": 0.0}
-while(max_depth < 8):
+while(max_depth < 5):
     n_estimators = 100
-    while(n_estimators < 1000):
+    while(n_estimators < 400):
         learning_rate = 0.001
         while(learning_rate < .1):
-            clf = XGBClassifier(max_depth=max_depth, objective='multi:softprob', n_estimators=n_estimators, 
+            clf = XGBClassifier(max_depth=max_depth, objective='multi:softmax', n_estimators=n_estimators, 
                          enable_categorical=True, learning_rate=learning_rate)
             clf.fit(X_train, y_train)  
             train1 = clf.predict_proba(X_train)
@@ -60,7 +75,7 @@ while(max_depth < 8):
                 max_test_acc = test_acc
 
 
-            learning_rate += .005
+            learning_rate += .003
         n_estimators += 100
     max_depth += 1
         
