@@ -17,4 +17,4 @@ six==1.16.0
 threadpoolctl
 tzdata==2023.3
 Werkzeug
-xgboost==2.0.1
+xgboost
