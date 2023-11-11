@@ -28,9 +28,8 @@ def predict_classes(list_of_one_hot):
         result.append(class_result)
     return result
 x_data, y_data = getData()
-X_train, X_test, y_train, y_test = train_test_split(x_data, y_data, test_size=.2)
-
-clf = XGBClassifier(max_depth=8, objective='multi:softprob', n_estimators=500, 
+X_train, X_test, y_train, y_test = train_test_split(x_data, y_data, test_size=.2, random_state=44)
+clf = XGBClassifier(max_depth=4, objective='multi:softprob', n_estimators=400, 
                         num_classes=8)
 
 clf.fit(X_train, y_train)  
