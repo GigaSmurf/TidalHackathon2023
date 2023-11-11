@@ -16,5 +16,5 @@ scipy
 six==1.16.0
 threadpoolctl
 tzdata==2023.3
-Werkzeug==3.0.1
+Werkzeug
 xgboost==2.0.1
