@@ -1,0 +1,48 @@
+/* Slideshow.css */
+.slideshow-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .slideshow-question {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  
+  .slideshow-options {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .slideshow-options button {
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .slideshow-options button:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .slideshow-next-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .slideshow-next-btn:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
