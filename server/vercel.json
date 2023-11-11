@@ -1,0 +1,11 @@
+{
+    "builds":[
+        {
+            "src":"example.py",
+            "use":"@vercel/python"
+        }
+    ],
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/example" }
+    ]
+  }
