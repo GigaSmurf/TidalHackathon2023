@@ -2,7 +2,7 @@ from xgboost import XGBClassifier
 # read data
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
-from server.api.parsing_csv import getData
+from parsing_csv import getData
 def calculateAccuracy(original, predicted):
     correct = 0
     i = 0
