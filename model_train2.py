@@ -29,11 +29,9 @@ def predict_classes(list_of_one_hot):
         result.append(class_result)
     return result
 x_data, y_data = getData2()
-print(x_data)
-print(y_data)
+
 X_train, X_test, y_train, y_test = train_test_split(x_data, y_data, test_size=.2, random_state=44)
-clf = XGBClassifier(max_depth=4, objective='multi:softprob', n_estimators=350, 
-                         enable_categorical=True, learning_rate=0.01)
+
 max_depth = 0
 max_test_acc = 0.0
 max_train_acc = 0.0
