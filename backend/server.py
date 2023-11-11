@@ -35,7 +35,7 @@ def your_post_handler():
     
     train_classes = predict_classes(train1)
     
-    response = {'message': f'{train_classes}'}
+    response = {'message': train_classes[0]}
     return jsonify(response), 200  # Return a JSON
 
 if __name__ == '__main__':
