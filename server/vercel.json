@@ -1,11 +1,15 @@
 {
-    "builds":[
+    "version": 2,
+    "builds": [
         {
-            "src":"example.py",
-            "use":"@vercel/python"
+            "src": "api/main.py",
+            "use": "@vercel/python"
         }
     ],
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/example" }
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "api/main.py"
+        }
     ]
-  }
+}
