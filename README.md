@@ -6,3 +6,6 @@ install requirements with:\
 ```
 pip install -r requirements.txt
 ```
+
+Ideation:
+https://docs.google.com/document/d/15iW_mBtbPz2mkbkUkIabK-HNRtJU1MWaCXYoYWsbXc4/edit?usp=sharing
